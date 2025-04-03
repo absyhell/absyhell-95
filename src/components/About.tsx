@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { CheckCircle } from 'lucide-react';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 const About: React.FC = () => {
   return (
@@ -11,9 +12,11 @@ const About: React.FC = () => {
             <div className="relative">
               <div className="animated-border w-full aspect-square">
                 <div className="w-full h-full bg-muted rounded-lg flex items-center justify-center overflow-hidden">
-                  <div className="w-4/5 h-4/5 bg-gradient-to-br from-primary/50 to-secondary/50 rounded-full animate-float flex items-center justify-center">
-                    <span className="text-4xl font-bold text-white">AB</span>
-                  </div>
+                  <img 
+                    src="/lovable-uploads/b0f780f6-ea54-4d16-b002-6718c48bf2b7.png" 
+                    alt="Ayush profile" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>

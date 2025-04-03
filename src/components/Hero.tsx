@@ -17,7 +17,7 @@ const Hero: React.FC = () => {
         </p>
         
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4">
-          Hey there, I'm <span className="gradient-text">Absy</span>
+          Hey there, I'm <span className="gradient-text">Ayush</span>
         </h1>
         
         <p className="max-w-[700px] text-xl md:text-2xl text-foreground/70 mb-8">
@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
             <span className="sr-only">Twitter</span>
             <Twitter size={24} />
           </a>
-          <a href="mailto:contact@absy.dev" className="p-2 rounded-full border border-border hover:border-primary hover:text-primary transition-colors">
+          <a href="mailto:contact@ayush.dev" className="p-2 rounded-full border border-border hover:border-primary hover:text-primary transition-colors">
             <span className="sr-only">Email</span>
             <Mail size={24} />
           </a>

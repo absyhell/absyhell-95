@@ -12,6 +12,8 @@ interface Project {
   badges: string[];
   liveUrl: string;
   githubUrl: string;
+  isInternal?: boolean;
+  internalId?: string;
 }
 
 const projects: Project[] = [
@@ -20,22 +22,26 @@ const projects: Project[] = [
     description: "A full-featured online store with product catalog, cart functionality, user authentication, and payment integration.",
     image: "/placeholder.svg",
     badges: ["React", "Node.js", "MongoDB", "Stripe"],
-    liveUrl: "#",
-    githubUrl: "#"
+    liveUrl: "#shop",
+    githubUrl: "#",
+    isInternal: true,
+    internalId: "shop"
+  },
+  {
+    title: "Weather Dashboard",
+    description: "A responsive weather application featuring real-time forecasts, location search, and interactive weather maps.",
+    image: "/placeholder.svg",
+    badges: ["React", "TypeScript", "OpenWeatherAPI", "TailwindCSS"],
+    liveUrl: "#weather",
+    githubUrl: "#",
+    isInternal: true,
+    internalId: "weather"
   },
   {
     title: "Task Management App",
     description: "A productivity tool for organizing tasks with drag-and-drop functionality, user collaboration, and progress tracking.",
     image: "/placeholder.svg",
     badges: ["Next.js", "TypeScript", "Firebase", "Tailwind"],
-    liveUrl: "#",
-    githubUrl: "#"
-  },
-  {
-    title: "Weather Dashboard",
-    description: "A responsive weather application featuring real-time forecasts, location search, and interactive weather maps.",
-    image: "/placeholder.svg",
-    badges: ["Vue.js", "Express", "Weather API", "Chart.js"],
     liveUrl: "#",
     githubUrl: "#"
   },
@@ -68,6 +74,7 @@ const Projects: React.FC = () => {
               key={index} 
               className="overflow-hidden animate-fade-in hover:shadow-lg transition-shadow bg-card border border-border"
               style={{animationDelay: `${(index + 1) * 150}ms`}}
+              id={project.isInternal ? project.internalId : undefined}
             >
               <div className="h-48 bg-muted flex items-center justify-center overflow-hidden">
                 <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
@@ -85,15 +92,15 @@ const Projects: React.FC = () => {
               </CardContent>
               <CardFooter className="p-6 pt-0 flex gap-4">
                 <Button asChild variant="outline" size="sm" className="gap-2">
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                  <a href={project.githubUrl} target={project.isInternal ? "_self" : "_blank"} rel="noopener noreferrer">
                     <Github className="h-4 w-4" />
                     Code
                   </a>
                 </Button>
                 <Button asChild size="sm" className="gap-2">
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                  <a href={project.liveUrl} target={project.isInternal ? "_self" : "_blank"} rel="noopener noreferrer">
                     <ExternalLink className="h-4 w-4" />
-                    Live Demo
+                    {project.isInternal ? 'View Demo' : 'Live Demo'}
                   </a>
                 </Button>
               </CardFooter>

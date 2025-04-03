@@ -8,6 +8,8 @@ const navLinks = [
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
+  { name: 'Weather', href: '#weather' },
+  { name: 'Shop', href: '#shop' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -31,7 +33,7 @@ const Navbar: React.FC = () => {
       scrolled ? 'bg-background/80 backdrop-blur-lg shadow-sm' : 'bg-transparent'
     )}>
       <div className="container mx-auto flex items-center justify-between">
-        <a href="#home" className="text-2xl font-bold gradient-text">Absy.dev</a>
+        <a href="#home" className="text-2xl font-bold gradient-text">Ayush.dev</a>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:block">
