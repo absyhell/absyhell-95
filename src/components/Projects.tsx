@@ -1,0 +1,117 @@
+
+import React from 'react';
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ExternalLink, Github } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  badges: string[];
+  liveUrl: string;
+  githubUrl: string;
+}
+
+const projects: Project[] = [
+  {
+    title: "E-Commerce Platform",
+    description: "A full-featured online store with product catalog, cart functionality, user authentication, and payment integration.",
+    image: "/placeholder.svg",
+    badges: ["React", "Node.js", "MongoDB", "Stripe"],
+    liveUrl: "#",
+    githubUrl: "#"
+  },
+  {
+    title: "Task Management App",
+    description: "A productivity tool for organizing tasks with drag-and-drop functionality, user collaboration, and progress tracking.",
+    image: "/placeholder.svg",
+    badges: ["Next.js", "TypeScript", "Firebase", "Tailwind"],
+    liveUrl: "#",
+    githubUrl: "#"
+  },
+  {
+    title: "Weather Dashboard",
+    description: "A responsive weather application featuring real-time forecasts, location search, and interactive weather maps.",
+    image: "/placeholder.svg",
+    badges: ["Vue.js", "Express", "Weather API", "Chart.js"],
+    liveUrl: "#",
+    githubUrl: "#"
+  },
+  {
+    title: "Social Media Analytics",
+    description: "Data visualization platform for social media metrics, showing engagement statistics and audience growth.",
+    image: "/placeholder.svg",
+    badges: ["React", "D3.js", "Node.js", "GraphQL"],
+    liveUrl: "#",
+    githubUrl: "#"
+  }
+];
+
+const Projects: React.FC = () => {
+  return (
+    <section id="projects" className="py-20 md:py-32">
+      <div className="container px-4 md:px-6">
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Featured <span className="highlight">Projects</span>
+          </h2>
+          <p className="max-w-3xl mx-auto text-lg text-foreground/80">
+            Here are some of my recent projects that showcase my technical skills and problem-solving abilities.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((project, index) => (
+            <Card 
+              key={index} 
+              className="overflow-hidden animate-fade-in hover:shadow-lg transition-shadow bg-card border border-border"
+              style={{animationDelay: `${(index + 1) * 150}ms`}}
+            >
+              <div className="h-48 bg-muted flex items-center justify-center overflow-hidden">
+                <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
+                  <span className="font-mono font-bold">{project.title.substring(0, 2)}</span>
+                </div>
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+                <p className="text-foreground/70 mb-4">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.badges.map((badge, badgeIndex) => (
+                    <Badge key={badgeIndex} variant="secondary">{badge}</Badge>
+                  ))}
+                </div>
+              </CardContent>
+              <CardFooter className="p-6 pt-0 flex gap-4">
+                <Button asChild variant="outline" size="sm" className="gap-2">
+                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                    <Github className="h-4 w-4" />
+                    Code
+                  </a>
+                </Button>
+                <Button asChild size="sm" className="gap-2">
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="h-4 w-4" />
+                    Live Demo
+                  </a>
+                </Button>
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Button asChild variant="outline" size="lg">
+            <a href="#" className="gap-2">
+              View All Projects
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Projects;
