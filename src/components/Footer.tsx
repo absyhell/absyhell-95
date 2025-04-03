@@ -56,21 +56,21 @@ const Footer: React.FC = () => {
           <div className="space-y-4">
             <h4 className="font-semibold">Connect</h4>
             <div className="flex space-x-3">
-              <a href="#" className="p-2 rounded-full bg-muted hover:bg-primary hover:text-white transition-colors" aria-label="GitHub">
+              <a href="https://github.com/Absyhell" className="p-2 rounded-full bg-muted hover:bg-primary hover:text-white transition-colors" aria-label="GitHub">
                 <Github size={18} />
               </a>
-              <a href="#" className="p-2 rounded-full bg-muted hover:bg-primary hover:text-white transition-colors" aria-label="LinkedIn">
+              <a href="https://linkedin.com/in/ayush-raj-288a0127a" className="p-2 rounded-full bg-muted hover:bg-primary hover:text-white transition-colors" aria-label="LinkedIn">
                 <Linkedin size={18} />
               </a>
-              <a href="#" className="p-2 rounded-full bg-muted hover:bg-primary hover:text-white transition-colors" aria-label="Twitter">
+              <a href="https://twitter.com" className="p-2 rounded-full bg-muted hover:bg-primary hover:text-white transition-colors" aria-label="Twitter">
                 <Twitter size={18} />
               </a>
-              <a href="#" className="p-2 rounded-full bg-muted hover:bg-primary hover:text-white transition-colors" aria-label="Email">
+              <a href="mailto:ayushraj846843@gmail.com" className="p-2 rounded-full bg-muted hover:bg-primary hover:text-white transition-colors" aria-label="Email">
                 <Mail size={18} />
               </a>
             </div>
             <p className="text-sm text-foreground/70">
-              Email: contact@absy.dev<br />
+              Email: ayushraj846843@gmail.com<br />
               Phone: +1 (234) 567-8900
             </p>
           </div>

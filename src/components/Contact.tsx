@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -88,8 +87,8 @@ const Contact: React.FC = () => {
                     </div>
                     <div>
                       <h4 className="font-medium">Email</h4>
-                      <a href="mailto:contact@absy.dev" className="text-muted-foreground hover:text-primary transition-colors">
-                        contact@absy.dev
+                      <a href="mailto:ayushraj846843@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                        ayushraj846843@gmail.com
                       </a>
                     </div>
                   </CardContent>

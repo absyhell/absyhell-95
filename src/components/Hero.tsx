@@ -34,11 +34,11 @@ const Hero: React.FC = () => {
         </div>
         
         <div className="flex space-x-4 mb-16">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full border border-border hover:border-primary hover:text-primary transition-colors">
+          <a href="https://github.com/Absyhell" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full border border-border hover:border-primary hover:text-primary transition-colors">
             <span className="sr-only">GitHub</span>
             <Github size={24} />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full border border-border hover:border-primary hover:text-primary transition-colors">
+          <a href="https://linkedin.com/in/ayush-raj-288a0127a" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full border border-border hover:border-primary hover:text-primary transition-colors">
             <span className="sr-only">LinkedIn</span>
             <Linkedin size={24} />
           </a>
@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
             <span className="sr-only">Twitter</span>
             <Twitter size={24} />
           </a>
-          <a href="mailto:contact@ayush.dev" className="p-2 rounded-full border border-border hover:border-primary hover:text-primary transition-colors">
+          <a href="mailto:ayushraj846843@gmail.com" className="p-2 rounded-full border border-border hover:border-primary hover:text-primary transition-colors">
             <span className="sr-only">Email</span>
             <Mail size={24} />
           </a>
