@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import ThemeToggle from './ThemeToggle';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -36,8 +37,8 @@ const Navbar: React.FC = () => {
         <a href="#home" className="text-2xl font-bold gradient-text">Ayush.dev</a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:block">
-          <ul className="flex items-center space-x-8">
+        <nav className="hidden md:flex items-center">
+          <ul className="flex items-center space-x-8 mr-4">
             {navLinks.map((link) => (
               <li key={link.name}>
                 <a 
@@ -49,16 +50,20 @@ const Navbar: React.FC = () => {
               </li>
             ))}
           </ul>
+          <ThemeToggle />
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button 
-          onClick={() => setIsOpen(!isOpen)} 
-          className="md:hidden text-foreground"
-          aria-label={isOpen ? 'Close menu' : 'Open menu'}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Menu Button and Theme Toggle */}
+        <div className="flex items-center space-x-4 md:hidden">
+          <ThemeToggle />
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            className="text-foreground"
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
 
         {/* Mobile Menu */}
         {isOpen && (
