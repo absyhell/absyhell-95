@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -101,8 +102,8 @@ const Contact: React.FC = () => {
                     </div>
                     <div>
                       <h4 className="font-medium">Phone</h4>
-                      <a href="tel:+123456789" className="text-muted-foreground hover:text-primary transition-colors">
-                        +1 (234) 567-8900
+                      <a href="tel:7279020348" className="text-muted-foreground hover:text-primary transition-colors">
+                        7279020348
                       </a>
                     </div>
                   </CardContent>

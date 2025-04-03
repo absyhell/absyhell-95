@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
             </div>
             <p className="text-sm text-foreground/70">
               Email: ayushraj846843@gmail.com<br />
-              Phone: +1 (234) 567-8900
+              Phone: 7279020348
             </p>
           </div>
         </div>
