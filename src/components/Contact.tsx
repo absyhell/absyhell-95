@@ -117,7 +117,7 @@ const Contact: React.FC = () => {
                     <div>
                       <h4 className="font-medium">Location</h4>
                       <p className="text-muted-foreground">
-                        New York City, USA
+                        Bengaluru, India
                       </p>
                     </div>
                   </CardContent>

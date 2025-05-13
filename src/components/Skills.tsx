@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { Code2, Database, Palette, LayoutGrid, Compass, RotateCw } from 'lucide-react';
+import { Code2, Database, Palette, Compass } from 'lucide-react';
 
 interface SkillCategory {
   icon: React.ElementType;
@@ -45,26 +45,6 @@ const skillCategories: SkillCategory[] = [
     ]
   },
   {
-    icon: RotateCw,
-    title: "DevOps & Tools",
-    skills: [
-      { name: "Git/GitHub", level: 85 },
-      { name: "Docker", level: 70 },
-      { name: "CI/CD", level: 65 },
-      { name: "AWS", level: 60 }
-    ]
-  },
-  {
-    icon: LayoutGrid,
-    title: "Frameworks & Libraries",
-    skills: [
-      { name: "Redux", level: 80 },
-      { name: "Material UI", level: 75 },
-      { name: "Bootstrap", level: 85 },
-      { name: "GraphQL", level: 65 }
-    ]
-  },
-  {
     icon: Compass,
     title: "Other Skills",
     skills: [
@@ -90,7 +70,7 @@ const Skills: React.FC = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {skillCategories.map((category, index) => (
             <Card key={index} className="glass-card animate-fade-in" style={{animationDelay: `${(index + 1) * 100}ms`}}>
               <CardContent className="p-6">
