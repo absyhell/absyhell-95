@@ -65,12 +65,12 @@ const Footer: React.FC = () => {
               <a href="https://twitter.com" className="p-2 rounded-full bg-muted hover:bg-primary hover:text-white transition-colors" aria-label="Twitter">
                 <Twitter size={18} />
               </a>
-              <a href="mailto:ayushraj846843@gmail.com" className="p-2 rounded-full bg-muted hover:bg-primary hover:text-white transition-colors" aria-label="Email">
+              <a href="mailto:absyhell@gmail.com" className="p-2 rounded-full bg-muted hover:bg-primary hover:text-white transition-colors" aria-label="Email">
                 <Mail size={18} />
               </a>
             </div>
             <p className="text-sm text-foreground/70">
-              Email: ayushraj846843@gmail.com<br />
+              Email: absyhell@gmail.com<br />
               Phone: 7279020348
             </p>
           </div>
