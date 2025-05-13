@@ -1,7 +1,8 @@
+
 import React from 'react';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, Film } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 interface Project {
@@ -13,9 +14,19 @@ interface Project {
   githubUrl: string;
   isInternal?: boolean;
   internalId?: string;
+  icon?: React.ReactNode;
 }
 
 const projects: Project[] = [
+  {
+    title: "Cinematics",
+    description: "A personalized movie recommendation system using machine learning algorithms to suggest films based on user preferences and viewing history.",
+    image: "/placeholder.svg",
+    badges: ["React", "Python", "ML", "TMDB API"],
+    liveUrl: "#",
+    githubUrl: "#",
+    icon: <Film className="h-8 w-8 text-primary/70" />
+  },
   {
     title: "Weather Dashboard",
     description: "A responsive weather application featuring real-time forecasts, location search, and interactive weather maps.",
@@ -58,9 +69,13 @@ const Projects: React.FC = () => {
               id={project.isInternal ? project.internalId : undefined}
             >
               <div className="h-48 bg-muted flex items-center justify-center overflow-hidden">
-                <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
-                  <span className="font-mono font-bold">{project.title.substring(0, 2)}</span>
-                </div>
+                {project.icon ? (
+                  project.icon
+                ) : (
+                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
+                    <span className="font-mono font-bold">{project.title.substring(0, 2)}</span>
+                  </div>
+                )}
               </div>
               <CardContent className="p-6">
                 <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
