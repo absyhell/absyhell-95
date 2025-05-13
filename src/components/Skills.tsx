@@ -1,16 +1,12 @@
 
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
 import { Code2, Database, Palette, Compass } from 'lucide-react';
 
 interface SkillCategory {
   icon: React.ElementType;
   title: string;
-  skills: {
-    name: string;
-    level: number;
-  }[];
+  skills: string[];
 }
 
 const skillCategories: SkillCategory[] = [
@@ -18,40 +14,37 @@ const skillCategories: SkillCategory[] = [
     icon: Code2,
     title: "Frontend Technologies",
     skills: [
-      { name: "HTML/CSS", level: 90 },
-      { name: "JavaScript/TypeScript", level: 85 },
-      { name: "React", level: 88 },
-      { name: "Next.js", level: 80 }
+      "HTML/CSS",
+      "JavaScript/TypeScript",
+      "React"
     ]
   },
   {
     icon: Database,
     title: "Backend Technologies",
     skills: [
-      { name: "Node.js", level: 82 },
-      { name: "Express", level: 80 },
-      { name: "MongoDB", level: 75 },
-      { name: "SQL", level: 70 }
+      "Node.js",
+      "MongoDB",
+      "SQL"
     ]
   },
   {
     icon: Palette,
     title: "Design & UI",
     skills: [
-      { name: "Tailwind CSS", level: 90 },
-      { name: "Figma", level: 75 },
-      { name: "UI/UX Principles", level: 80 },
-      { name: "Responsive Design", level: 88 }
+      "Tailwind CSS",
+      "UI/UX Principles",
+      "Responsive Design"
     ]
   },
   {
     icon: Compass,
     title: "Other Skills",
     skills: [
-      { name: "Problem Solving", level: 90 },
-      { name: "Team Collaboration", level: 88 },
-      { name: "Project Management", level: 75 },
-      { name: "Technical Writing", level: 70 }
+      "Problem Solving",
+      "Team Collaboration",
+      "Project Management",
+      "Technical Writing"
     ]
   }
 ];
@@ -80,15 +73,14 @@ const Skills: React.FC = () => {
                   </div>
                   <h3 className="text-xl font-semibold">{category.title}</h3>
                 </div>
-                <div className="space-y-4">
+                <div className="flex flex-wrap gap-3">
                   {category.skills.map((skill, skillIndex) => (
-                    <div key={skillIndex}>
-                      <div className="flex justify-between mb-1">
-                        <span className="font-medium">{skill.name}</span>
-                        <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                      </div>
-                      <Progress value={skill.level} className="h-2" />
-                    </div>
+                    <span 
+                      key={skillIndex}
+                      className="px-3 py-1.5 bg-primary/20 text-primary font-medium rounded-full hover:bg-primary/30 transition-colors"
+                    >
+                      {skill}
+                    </span>
                   ))}
                 </div>
               </CardContent>
