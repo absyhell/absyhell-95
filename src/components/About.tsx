@@ -29,13 +29,14 @@ const About: React.FC = () => {
             
             <p className="text-lg text-foreground/80">
               I'm a passionate full-stack developer with a strong focus on creating efficient, scalable, and 
-              user-friendly web applications. With a background in computer science and years of experience
-              in the industry, I bring technical expertise and creative problem-solving to every project.
+              user-friendly web applications. With a background in computer science and eagerness in exploring 
+              AI tools which can make my work easy, I try to bring technical expertise and creative problem-solving 
+              to every project.
             </p>
             
             <p className="text-lg text-foreground/80">
               When I'm not coding, you'll find me exploring new technologies, contributing to open-source 
-              projects, or sharing my knowledge through technical blogs and community events.
+              projects, or enjoying with my friends.
             </p>
 
             <div className="pt-4">
