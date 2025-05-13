@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
       <div className="container px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div className="space-y-4">
-            <h3 className="text-xl font-bold gradient-text">Absy.dev</h3>
+            <h3 className="text-xl font-bold gradient-text">Ayush.dev</h3>
             <p className="text-sm text-foreground/70">
               Building the digital future one pixel at a time. A full-stack developer passionate about creating beautiful, functional web experiences.
             </p>
@@ -80,7 +80,7 @@ const Footer: React.FC = () => {
         
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-foreground/60">
-            &copy; {currentYear} Absy | All rights reserved
+            &copy; {currentYear} Ayush | All rights reserved
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-xs text-foreground/60 hover:text-primary transition-colors">Privacy Policy</a>
