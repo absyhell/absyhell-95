@@ -13,9 +13,9 @@ const About: React.FC = () => {
               <div className="animated-border w-full aspect-square">
                 <div className="w-full h-full bg-muted rounded-lg flex items-center justify-center overflow-hidden">
                   <img 
-                    src="/lovable-uploads/b0f780f6-ea54-4d16-b002-6718c48bf2b7.png" 
+                    src="/lovable-uploads/90d277b7-abae-467e-9188-296309a1fe8f.png" 
                     alt="Ayush profile" 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-center"
                   />
                 </div>
               </div>
