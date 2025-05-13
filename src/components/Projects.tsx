@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -18,16 +17,6 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "E-Commerce Platform",
-    description: "A full-featured online store with product catalog, cart functionality, user authentication, and payment integration.",
-    image: "/placeholder.svg",
-    badges: ["React", "Node.js", "MongoDB", "Stripe"],
-    liveUrl: "#shop",
-    githubUrl: "#",
-    isInternal: true,
-    internalId: "shop"
-  },
-  {
     title: "Weather Dashboard",
     description: "A responsive weather application featuring real-time forecasts, location search, and interactive weather maps.",
     image: "/placeholder.svg",
@@ -42,14 +31,6 @@ const projects: Project[] = [
     description: "A productivity tool for organizing tasks with drag-and-drop functionality, user collaboration, and progress tracking.",
     image: "/placeholder.svg",
     badges: ["Next.js", "TypeScript", "Firebase", "Tailwind"],
-    liveUrl: "#",
-    githubUrl: "#"
-  },
-  {
-    title: "Social Media Analytics",
-    description: "Data visualization platform for social media metrics, showing engagement statistics and audience growth.",
-    image: "/placeholder.svg",
-    badges: ["React", "D3.js", "Node.js", "GraphQL"],
     liveUrl: "#",
     githubUrl: "#"
   }
