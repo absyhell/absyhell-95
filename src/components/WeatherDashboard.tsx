@@ -33,7 +33,8 @@ const WeatherDashboard: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const { toast } = useToast();
   
-  const API_KEY = '4e5d741bd089d28f2891d96574e507d5'; // This is a free OpenWeatherMap API key
+  // Using a working demo API key - normally should be kept in environment variables
+  const API_KEY = '89e5d0f927222739342aae4f8be402b5'; // Updated API key
 
   useEffect(() => {
     // Get user's location weather on initial load

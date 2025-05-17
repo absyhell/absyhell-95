@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
-import { WeatherDashboard } from '@/components/WeatherDashboard';
+import WeatherDashboard from '@/components/WeatherDashboard';
 
 const Weather: React.FC = () => {
   const navigate = useNavigate();
