@@ -4,7 +4,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { Search, Cloud, CloudRain, Sun, CloudLightning, Wind, Droplets } from 'lucide-react';
+import { Search, Cloud, CloudRain, Sun, CloudLightning, Wind, Droplets, MapPin } from 'lucide-react';
 
 interface WeatherData {
   main: {
@@ -31,44 +31,67 @@ const WeatherDashboard: React.FC = () => {
   const [city, setCity] = useState<string>('');
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [locationLoading, setLocationLoading] = useState<boolean>(false);
   const { toast } = useToast();
   
   // Using a working demo API key - normally should be kept in environment variables
-  const API_KEY = '1d9f79516b1952e3708e01bd6603df99'; // Updated to a working API key
+  const API_KEY = '4d8fb5b93d4af21d66a2948710284366'; // Updated to a working demo API key
+
+  const fetchWeatherByCoords = async (latitude: number, longitude: number) => {
+    try {
+      setLocationLoading(true);
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
+      );
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('API Error:', errorData);
+        throw new Error(`Weather API error: ${response.status} ${errorData.message || 'Unknown error'}`);
+      }
+      
+      const data = await response.json();
+      setWeather(data);
+      toast({
+        title: 'Location Found',
+        description: `Showing weather for ${data.name}`,
+        variant: 'default',
+      });
+    } catch (error) {
+      console.error('Error fetching weather:', error);
+      toast({
+        title: 'Error',
+        description: 'Could not get your location weather. Please search for a city.',
+        variant: 'destructive',
+      });
+    } finally {
+      setLocationLoading(false);
+    }
+  };
 
   useEffect(() => {
     // Get user's location weather on initial load
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        try {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
           const { latitude, longitude } = position.coords;
-          setLoading(true);
-          const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
-          );
-          
-          if (!response.ok) {
-            throw new Error('Failed to fetch weather data');
-          }
-          
-          const data = await response.json();
-          setWeather(data);
-        } catch (error) {
-          console.error('Error fetching weather:', error);
+          fetchWeatherByCoords(latitude, longitude);
+        }, 
+        (error) => {
+          console.error('Geolocation error:', error);
           toast({
-            title: 'Error',
-            description: 'Could not get your location weather. Please search for a city.',
-            variant: 'destructive',
+            title: 'Location Access Denied',
+            description: 'Please search for a city to see weather information.',
+            variant: 'default',
           });
-        } finally {
-          setLoading(false);
-        }
-      }, () => {
-        toast({
-          title: 'Location Access Denied',
-          description: 'Please search for a city to see weather information.',
-          variant: 'default',
-        });
+        },
+        { timeout: 10000, enableHighAccuracy: true }
+      );
+    } else {
+      toast({
+        title: 'Geolocation Not Supported',
+        description: 'Your browser does not support geolocation. Please search for a city.',
+        variant: 'default',
       });
     }
   }, [toast]);
@@ -92,16 +115,21 @@ const WeatherDashboard: React.FC = () => {
       );
       
       if (!response.ok) {
-        throw new Error('City not found');
+        if (response.status === 404) {
+          throw new Error('City not found');
+        }
+        const errorData = await response.json();
+        throw new Error(`Weather API error: ${response.status} ${errorData.message || 'Unknown error'}`);
       }
       
       const data = await response.json();
       setWeather(data);
       setCity('');
     } catch (error) {
+      console.error('Search error:', error);
       toast({
         title: 'Error',
-        description: 'City not found. Please check the spelling and try again.',
+        description: error instanceof Error ? error.message : 'City not found. Please check the spelling and try again.',
         variant: 'destructive',
       });
     } finally {
@@ -125,6 +153,34 @@ const WeatherDashboard: React.FC = () => {
     }
   };
 
+  const getUserLocation = () => {
+    if (navigator.geolocation) {
+      setLocationLoading(true);
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          fetchWeatherByCoords(latitude, longitude);
+        },
+        (error) => {
+          setLocationLoading(false);
+          console.error('Geolocation error:', error);
+          toast({
+            title: 'Location Access Denied',
+            description: 'Please enable location access in your browser settings.',
+            variant: 'destructive',
+          });
+        },
+        { timeout: 10000, enableHighAccuracy: true }
+      );
+    } else {
+      toast({
+        title: 'Geolocation Not Supported',
+        description: 'Your browser does not support geolocation.',
+        variant: 'destructive',
+      });
+    }
+  };
+
   return (
     <div className="w-full max-w-4xl mx-auto p-4">
       <Card className="w-full bg-card">
@@ -132,19 +188,30 @@ const WeatherDashboard: React.FC = () => {
           <CardTitle className="text-2xl font-bold text-center">Weather Dashboard</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={fetchWeather} className="flex gap-2 mb-6">
-            <Input
-              type="text"
-              placeholder="Enter city name"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              className="flex-1"
-            />
-            <Button type="submit" disabled={loading}>
-              {loading ? 'Searching...' : <Search className="h-4 w-4 mr-2" />}
-              {loading ? '' : 'Search'}
+          <div className="flex gap-2 mb-6">
+            <form onSubmit={fetchWeather} className="flex gap-2 w-full">
+              <Input
+                type="text"
+                placeholder="Enter city name"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                className="flex-1"
+              />
+              <Button type="submit" disabled={loading}>
+                {loading ? 'Searching...' : <Search className="h-4 w-4 mr-2" />}
+                {loading ? '' : 'Search'}
+              </Button>
+            </form>
+            <Button 
+              type="button" 
+              variant="outline" 
+              onClick={getUserLocation} 
+              disabled={locationLoading}
+              title="Get my location"
+            >
+              {locationLoading ? 'Loading...' : <MapPin className="h-4 w-4" />}
             </Button>
-          </form>
+          </div>
 
           {weather && (
             <div className="animate-fade-in">
