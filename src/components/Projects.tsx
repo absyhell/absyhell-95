@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github, Film, Eye, Mic, Text } from 'lucide-react';
+import { ExternalLink, Github, Film, Eye, Mic, CalendarDays, CloudSun } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 interface Project {
@@ -43,20 +42,22 @@ const projects: Project[] = [
   {
     title: "Weather Dashboard",
     description: "A responsive weather application featuring real-time forecasts, location search, and interactive weather maps.",
-    image: "/placeholder.svg",
+    image: "/lovable-uploads/cfd8bd2b-ab5a-4ae2-ba5e-7c38e5ae0c2f.png",
     badges: ["React", "TypeScript", "OpenWeatherAPI", "TailwindCSS"],
     liveUrl: "#weather",
     githubUrl: "#",
     isInternal: true,
-    internalId: "weather"
+    internalId: "weather",
+    icon: <CloudSun className="h-8 w-8 text-primary/70" />
   },
   {
     title: "Task Management App",
     description: "A productivity tool for organizing tasks with drag-and-drop functionality, user collaboration, and progress tracking.",
-    image: "/placeholder.svg",
+    image: "/lovable-uploads/babf8517-97b9-452b-9ca0-0a973e11c829.png",
     badges: ["Next.js", "TypeScript", "Firebase", "Tailwind"],
     liveUrl: "#",
-    githubUrl: "#"
+    githubUrl: "#",
+    icon: <CalendarDays className="h-8 w-8 text-primary/70" />
   }
 ];
 
