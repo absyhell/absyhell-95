@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowLeft, Camera, Mic, MicOff, Video, VideoOff, Text } from 'lucide-react';
+import { ArrowLeft, Camera, Mic, MicOff, Video, VideoOff, Text, Glasses } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 
@@ -98,6 +98,21 @@ const SmartLens: React.FC = () => {
             <p className="text-lg text-muted-foreground">
               Converting sign language to voice and text for improved accessibility
             </p>
+          </div>
+          
+          {/* Featured image */}
+          <div className="relative rounded-lg overflow-hidden shadow-xl">
+            <img 
+              src="/lovable-uploads/a433f154-4e1a-4329-9255-30582ba2433e.png" 
+              alt="Smart glasses displaying sign language recognition" 
+              className="w-full object-cover max-h-[400px]" 
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-black/60 p-4 text-white">
+              <div className="flex items-center gap-2">
+                <Glasses className="h-5 w-5" />
+                <p>Smart Lens technology visualizing sign language in real-time</p>
+              </div>
+            </div>
           </div>
           
           <div className="grid gap-6 lg:grid-cols-2">
@@ -250,6 +265,34 @@ const SmartLens: React.FC = () => {
                 </div>
               </Card>
             </div>
+          </div>
+          
+          {/* New section highlighting the smart glasses */}
+          <div className="space-y-6">
+            <h2 className="text-2xl font-bold text-center">Smart Glasses Integration</h2>
+            <Card className="p-6">
+              <div className="grid md:grid-cols-2 gap-6 items-center">
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold">Next-Gen Accessibility</h3>
+                  <p>Our Smart Lens technology integrates with specially designed glasses that can display sign language translations in real-time, providing a seamless way for deaf and hearing individuals to communicate.</p>
+                  <ul className="space-y-2 list-disc pl-5">
+                    <li>Real-time sign language recognition</li>
+                    <li>Clear visual display on lens surface</li>
+                    <li>Portable and discreet design</li>
+                    <li>Extended battery life for all-day use</li>
+                  </ul>
+                </div>
+                <div className="flex justify-center">
+                  <div className="relative">
+                    <Glasses className="h-32 w-32 text-primary mx-auto mb-4" />
+                    <div className="text-center">
+                      <p className="font-medium">Smart Lens Glasses</p>
+                      <p className="text-sm text-muted-foreground">Next generation accessibility technology</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </main>

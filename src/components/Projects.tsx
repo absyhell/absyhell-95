@@ -21,7 +21,7 @@ const projects: Project[] = [
   {
     title: "Smart Lens",
     description: "An accessibility tool that converts sign language to voice and text in real-time, helping communication between blind and deaf individuals.",
-    image: "/placeholder.svg",
+    image: "/lovable-uploads/a433f154-4e1a-4329-9255-30582ba2433e.png",
     badges: ["React", "TensorFlow.js", "WebSpeech API", "Computer Vision"],
     liveUrl: "/smart-lens",
     githubUrl: "#",
@@ -82,12 +82,20 @@ const Projects: React.FC = () => {
               id={project.isInternal ? project.internalId : undefined}
             >
               <div className="h-48 bg-muted flex items-center justify-center overflow-hidden">
-                {project.icon ? (
-                  project.icon
+                {project.image === "/placeholder.svg" ? (
+                  project.icon ? (
+                    project.icon
+                  ) : (
+                    <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
+                      <span className="font-mono font-bold">{project.title.substring(0, 2)}</span>
+                    </div>
+                  )
                 ) : (
-                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
-                    <span className="font-mono font-bold">{project.title.substring(0, 2)}</span>
-                  </div>
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover"
+                  />
                 )}
               </div>
               <CardContent className="p-6">
