@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github, Film } from 'lucide-react';
+import { ExternalLink, Github, Film, Eye, Mic, Text } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 interface Project {
@@ -18,6 +18,17 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    title: "Smart Lens",
+    description: "An accessibility tool that converts sign language to voice and text in real-time, helping communication between blind and deaf individuals.",
+    image: "/placeholder.svg",
+    badges: ["React", "TensorFlow.js", "WebSpeech API", "Computer Vision"],
+    liveUrl: "/smart-lens",
+    githubUrl: "#",
+    isInternal: true,
+    internalId: "smart-lens",
+    icon: <Eye className="h-8 w-8 text-primary/70" />
+  },
   {
     title: "Cinematch",
     description: "A personalized movie recommendation system using machine learning algorithms to suggest films based on user preferences and viewing history.",
