@@ -1,12 +1,48 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Map, Mail, Phone, Clock, Send } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import MapComponent from './MapComponent';
+import { useToast } from '@/hooks/use-toast';
 
 const Contact: React.FC = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Show success toast
+    toast({
+      title: "Message sent!",
+      description: "Thank you for reaching out. I'll get back to you soon.",
+    });
+    
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+    });
+  };
+
+  // Bengaluru coordinates [longitude, latitude]
+  const bengaluruCoordinates: [number, number] = [77.5946, 12.9716];
+
   return (
     <section id="contact" className="py-20 md:py-32 bg-muted/30">
       <div className="container px-4 md:px-6">
@@ -21,7 +57,7 @@ const Contact: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="animate-fade-in [animation-delay:200ms]">
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="block text-sm font-medium">
@@ -32,6 +68,8 @@ const Contact: React.FC = () => {
                     placeholder="John Doe" 
                     className="w-full" 
                     required 
+                    value={formData.name}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="space-y-2">
@@ -44,6 +82,8 @@ const Contact: React.FC = () => {
                     placeholder="john@example.com" 
                     className="w-full" 
                     required 
+                    value={formData.email}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -56,6 +96,8 @@ const Contact: React.FC = () => {
                   placeholder="How can I help you?" 
                   className="w-full" 
                   required 
+                  value={formData.subject}
+                  onChange={handleChange}
                 />
               </div>
               <div className="space-y-2">
@@ -67,6 +109,8 @@ const Contact: React.FC = () => {
                   placeholder="Your message here..." 
                   className="w-full min-h-[150px]" 
                   required 
+                  value={formData.message}
+                  onChange={handleChange}
                 />
               </div>
               <Button type="submit" className="w-full gap-2">
@@ -139,11 +183,8 @@ const Contact: React.FC = () => {
               </div>
             </div>
 
-            <div className="rounded-lg overflow-hidden h-[250px] bg-muted flex items-center justify-center">
-              <div className="text-center">
-                <p className="text-muted-foreground">Map Placeholder</p>
-                <p className="text-sm text-muted-foreground/70">Interactive map would be displayed here</p>
-              </div>
+            <div className="rounded-lg overflow-hidden h-[250px]">
+              <MapComponent center={bengaluruCoordinates} />
             </div>
           </div>
         </div>
