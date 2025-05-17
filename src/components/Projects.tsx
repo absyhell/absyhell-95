@@ -19,12 +19,14 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Cinematics",
+    title: "Cinematch",
     description: "A personalized movie recommendation system using machine learning algorithms to suggest films based on user preferences and viewing history.",
     image: "/placeholder.svg",
-    badges: ["React", "Python", "ML", "TMDB API"],
-    liveUrl: "#",
+    badges: ["React", "TypeScript", "ML Algorithm", "Tailwind CSS"],
+    liveUrl: "/cinematch",
     githubUrl: "#",
+    isInternal: true,
+    internalId: "cinematch",
     icon: <Film className="h-8 w-8 text-primary/70" />
   },
   {
