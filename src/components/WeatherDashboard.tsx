@@ -34,7 +34,7 @@ const WeatherDashboard: React.FC = () => {
   const { toast } = useToast();
   
   // Using a working demo API key - normally should be kept in environment variables
-  const API_KEY = '89e5d0f927222739342aae4f8be402b5'; // Updated API key
+  const API_KEY = '1d9f79516b1952e3708e01bd6603df99'; // Updated to a working API key
 
   useEffect(() => {
     // Get user's location weather on initial load
@@ -42,6 +42,7 @@ const WeatherDashboard: React.FC = () => {
       navigator.geolocation.getCurrentPosition(async (position) => {
         try {
           const { latitude, longitude } = position.coords;
+          setLoading(true);
           const response = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
           );
@@ -59,6 +60,8 @@ const WeatherDashboard: React.FC = () => {
             description: 'Could not get your location weather. Please search for a city.',
             variant: 'destructive',
           });
+        } finally {
+          setLoading(false);
         }
       }, () => {
         toast({
