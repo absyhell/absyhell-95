@@ -31,7 +31,7 @@ const projects: Project[] = [
   {
     title: "Cinematch",
     description: "A personalized movie recommendation system using machine learning algorithms to suggest films based on user preferences and viewing history.",
-    image: "/placeholder.svg",
+    image: "/lovable-uploads/45a4f8db-3ab3-4e8c-b9fd-c57d1a84c695.png",
     badges: ["React", "TypeScript", "ML Algorithm", "Tailwind CSS"],
     liveUrl: "/cinematch",
     githubUrl: "#",
