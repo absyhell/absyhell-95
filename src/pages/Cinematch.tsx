@@ -13,7 +13,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { toast } from '@/components/ui/sonner';
+import { toast } from 'sonner';
 
 interface Movie {
   id: number;
